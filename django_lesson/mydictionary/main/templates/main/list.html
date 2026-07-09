@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+{% block title %} Words List {% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Words List</h1>
+        <h2> Список слов </h2>
+        <table>
+          <tr>
+            <th>Word 1</th>
+            <th>Word 2</th>
+          </tr>
+          {% for word1, word2 in words %}
+            <tr>
+              <td>{{ word1 }}</td>
+              <td>{{ word2 }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+    </div>
+{% endblock %}

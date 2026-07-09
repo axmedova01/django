@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% block title %} Add Word {% endblock %}
+
+{% block content %}
+    {% if message %}
+         <script>alert("{{ message }}")</script>
+    {% endif %}
+    <div class="features">
+        <h1>Add Word</h1>
+        <h2> Добавить слова </h2>
+        <form method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            <p>Слово на оригинале:<br> <input type="text" name="word1" required="required"></p>
+            <p>Перевод слова:<br> <input type="text" name="word2" required="required"></p>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}

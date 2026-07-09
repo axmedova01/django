@@ -1,0 +1,9 @@
+зуб-tooth
+привет-hello
+собака-dog
+груша-pear
+яблоко-apple
+сон-sleep
+слово-word
+солнце-sun
+бег-run
