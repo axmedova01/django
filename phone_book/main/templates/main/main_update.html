@@ -1,0 +1,24 @@
+{% extends 'main/index.html' %}
+
+{% block title %}Main update{% endblock %}
+
+{% block content %}
+    <div>
+    <h1>update data</h1>
+        <a class="btn btn-dark" href="{% url 'main_table' %}" role="button">Home</a><br>
+        <br>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.surname }}
+        {{ form.patronymic }}
+        {{ form.street }}
+        {{ form.nb_hs }}
+            {{ form.building }}
+            {{ form.flat }}
+        {{ form.ph_nb }}
+        <input type="submit" value="Update">
+        </form>
+    </div>
+
+{% endblock %}

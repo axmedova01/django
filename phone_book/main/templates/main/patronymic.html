@@ -1,0 +1,51 @@
+{% extends 'main/index.html' %}
+
+{% block title %}Patronymic{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Таблица отчество</h1>
+        <a class="btn btn-dark" href="{% url 'main_table' %}" role="button">Home</a><br>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.pat_val }} <br>
+            <span>{{ error }} </span>
+            <button class="btn btn-outline-success" type="submit">Добавить</button>
+            <button class="btn btn-outline-success" type="submit">Обновить</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Отчество</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in patronymic_data %}
+                    <tr>
+                        <td>{{ item.pat_id }}</td>
+                        <td>{{ item.pat_val }}</td>
+                        <td>
+                            <a href="{% url 'delete_patronymic' item.pat_id %}" class="btn btn-outline-danger">Удалить</a>
+                            <a href="{% url 'update_patronymic' item.pat_id %}" class="btn btn-outline-primary">Обновить</a>
+                        </td>
+                    </tr>
+                {% if not forloop.last %} <!-- Проверка, чтобы не добавлять отступ после последней записи -->
+                        <tr style="height: 20px;"></tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    table {
+    max-width: 400px;
+}
+</style>
+
+{% endblock %}
+

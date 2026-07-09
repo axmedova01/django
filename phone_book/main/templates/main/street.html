@@ -1,0 +1,51 @@
+{% extends 'main/index.html' %}
+
+{% block title %}Street{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Таблица улиц</h1>
+        <a class="btn btn-dark" href="{% url 'main_table' %}" role="button">Home</a><br>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.st_val }} <br>
+            <span>{{ error }} </span>
+            <button class="btn btn-outline-success" type="submit">Добавить</button>
+            <button class="btn btn-outline-success" type="submit">Обновить</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Улица</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in street_data %}
+                    <tr>
+                        <td>{{ item.st_id }}</td>
+                        <td>{{ item.st_val }}</td>
+                        <td>
+                            <a href="{% url 'delete_street' item.st_id %}" class="btn btn-outline-danger">Удалить</a>
+                            <a href="{% url 'update_street' item.st_id %}" class="btn btn-outline-primary">Обновить</a>
+                        </td>
+                    </tr>
+                {% if not forloop.last %} <!-- Проверка, чтобы не добавлять отступ после последней записи -->
+                        <tr style="height: 20px;"></tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    table {
+    max-width: 400px;
+}
+</style>
+
+{% endblock %}
+

@@ -1,0 +1,72 @@
+{% extends 'main/index.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <h1>Телефонный справочник</h1>
+    <a class="btn btn-outline-secondary" href="{% url 'name' %}" role="button">Name</a>
+    <a class="btn btn-outline-secondary" href="{% url 'surname' %}" role="button">Surname</a>
+    <a class="btn btn-outline-secondary" href="{% url 'patronymic' %}" role="button">Patronymic</a>
+    <a class="btn btn-outline-secondary" href="{% url 'street' %}" role="button">Street</a><br>
+<br>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Фильтр</button>
+    </form>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th>Улица</th>
+                <th>Номер дома</th>
+                <th>Корпус</th>
+                <th>Квартира</th>
+                <th>Телефон</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in queryset %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.patronymic }}</td>
+                <td>{{ item.street }}</td>
+                <td>{{ item.nb_hs }}</td>
+                <td>{{ item.building }}</td>
+                <td>{{ item.flat }}</td>
+                <td>{{ item.ph_nb }}</td>
+                <td>
+                <a href="{% url 'delete_main' item.id %}" class="btn btn-outline-danger">Удалить</a>
+                <a href="{% url 'update_main' item.id %}" class="btn btn-outline-primary">Обновить</a>
+                    </td>
+                </tr>
+                {% if not forloop.last %}
+                        <tr style="height: 20px;"></tr>
+                    {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+<style>
+    table {
+    max-width: 1300px;
+}
+.table th:first-child {
+    vertical-align: 300px;
+}
+    button {
+    background-color: lightgray;
+    color: black;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+</style>
+{% endblock %}
