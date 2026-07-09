@@ -1,0 +1,82 @@
+body {
+    background: #383a47;
+}
+
+aside {
+    float: left;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    height: 300vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+aside h3 {
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover,  aside ul a:hover {
+    color: #eb07aa;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+main .features {
+    float: left;
+    color: #f5dfef;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {
+    margin-top: -39px;
+    font-size: 35px;
+}
+main .features h3 {max-width: 400px; margin: 27px auto}
+main .features p {max-width: 400px; margin: 20px auto}
+
+.alert-warning {
+    float: left;
+    clear: both;
+    width: 550px;
+    margin: 20px 20%;
+    text-align: left;
+}
+
+form {
+    margin-left: 25%;
+    width: 450px;
+    margin-top: 39px;
+}
+
+main .features table {
+	width: 100%;
+	margin-left: 3.5%;
+	margin-bottom: 20px;
+	border: 15px solid #bf9fb6;
+	border-top: 5px solid #bf9fb6;
+	border-collapse: collapse;
+}
+main .features table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #bf9fb6;
+	border: none;
+	border-bottom: 5px solid #bf9fb6;
+}
+main .features table td {
+	padding: 5px;
+	border: none;
+	border-bottom: 5px solid #bf9fb6;
+}

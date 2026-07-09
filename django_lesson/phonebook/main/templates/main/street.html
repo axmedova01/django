@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% block title %} Улицы {% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Таблица улиц</h1>
+
+        {% if message %}
+             <script>alert("{{ message }}")</script>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.street }}
+            <br>
+            <input type="submit" class="btn btn-light" value="Добавить">
+            <input type="submit" class="btn btn-light" value="Обновить">
+        </form>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Улица</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in street_data %}
+                    <tr>
+                        <td>{{ item.id_street }}</td>
+                        <td>{{ item.street }}</td>
+                        <td>
+                            <a href="{% url 'delete_street' item.id_street %}" class="btn btn-danger">Удалить</a>
+                            <a href="{% url 'update_street' item.id_street %}" class="btn btn-success">Обновить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+

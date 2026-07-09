@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Телефонный справочник</h1>
+
+        <form method="get">
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-light" value="Поиск">
+        </form>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Улица</th>
+                    <th>Номер дома</th>
+                    <th>Корпус</th>
+                    <th>Квартира</th>
+                    <th>Телефон</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in queryset %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.fam }}</td>
+                    <td>{{ item.otch }}</td>
+                    <td>{{ item.street }}</td>
+                    <td>{{ item.bldn }}</td>
+                    <td>{{ item.bldn_k }}</td>
+                    <td>{{ item.appr }}</td>
+                    <td>{{ item.tel }}</td>
+                    <td>
+                    <a href="{% url 'delete_main' item.id %}" class="btn btn-danger">Удалить</a>
+                    <a href="{% url 'update_main' item.id %}" class="btn btn-success">Обновить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

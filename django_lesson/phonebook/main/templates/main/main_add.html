@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Создать новую запись</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-light" value="Создать">
+        </form>
+    </div>
+
+{% endblock %}

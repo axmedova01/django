@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Фамилии{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Таблица фамилий</h1>
+
+        {% if message %}
+             <script>alert("{{ message }}")</script>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.fam }}
+            <br>
+            <input type="submit" class="btn btn-light" value="Добавить">
+            <input type="submit" class="btn btn-light" value="Обновить">
+        </form>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Фамилия</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fam_data %}
+                    <tr>
+                        <td>{{ item.id_fam }}</td>
+                        <td>{{ item.fam }}</td>
+                        <td>
+                            <a href="{% url 'delete_fam' item.id_fam %}" class="btn btn-danger">Удалить</a>
+                            <a href="{% url 'update_fam' item.id_fam %}" class="btn btn-success">Обновить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
